@@ -5,7 +5,9 @@ var window_height = window.innerHeight;
 
 video.addEventListener('loadeddata', function() {
   video_duration = video.duration;
+});
 
+video.addEventListener('canplay', function() {
   window.addEventListener('scroll', function(event) {
     var percent_scrolled = window.scrollY / (document_height - window_height);
 
