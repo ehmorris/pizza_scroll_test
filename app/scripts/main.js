@@ -14,5 +14,11 @@ video.addEventListener('loadeddata', function() {
     video.currentTime = seek_in_seconds;
 
     video.play();
+
+    $('body').addClass('reading').removeClass('not_reading');
+
+    setTimeout(function() {
+      $('body').addClass('not_reading').removeClass('reading');
+    }, 10000);
   });
 });
