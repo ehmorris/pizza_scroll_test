@@ -26,3 +26,11 @@ $('p').on('mouseover', function() {
 $('p').on('mouseout', function() {
   $('body').addClass('not_reading').removeClass('reading');
 });
+
+$('body').on('touchstart', function() {
+  $('body').addClass('reading').removeClass('not_reading');
+});
+
+$('body').on('touchend', function() {
+  $('body').addClass('not_reading').removeClass('reading');
+});
