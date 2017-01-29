@@ -13,18 +13,31 @@ video.addEventListener('loadeddata', function() {
   video_duration = video.duration;
 });
 
+let play_or_pause_video = _.debounce(function(percent_scrolled, video) {
+  if (percent_scrolled < .9) {
+    console.log('play');
+    video.play();
+  } else {
+    console.log('pause');
+    video.pause();
+  }
+}, 100);
+
 video.addEventListener('canplay', function() {
   let scrollable_height = document_height - window_height;
+  let scroll_event_count = 0;
 
   window.addEventListener('scroll', function() {
-    let percent_scrolled = window.scrollY / scrollable_height;
-    let percent_video_duration = video_duration * percent_scrolled;
-    video.currentTime = percent_video_duration;
+    scroll_event_count = scroll_event_count + 1;
 
-    if (percent_scrolled < .9) {
-      video.play();
-    } else {
-      video.pause();
+    if (!!(scroll_event_count % 2)) {
+      let percent_scrolled = window.scrollY / scrollable_height;
+      let percent_video_duration = video_duration * percent_scrolled;
+      video.currentTime = percent_video_duration;
+
+      console.log('scroll');
+
+      play_or_pause_video(percent_scrolled, video);
     }
   });
 });
