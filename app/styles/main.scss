@@ -1,5 +1,6 @@
 body {
   background: #000;
+  text-rendering: optimizeLegibility;
 
   &.reading {
     .article { opacity: 1; }
@@ -36,7 +37,7 @@ body {
 
 .article {
   color: #fff;
-  font-family: Georgia;
+  font-family: serif;
   font-size: 2.5vw;
   line-height: 1.4;
   padding: 4em 0 4em 2em;
@@ -57,4 +58,10 @@ body {
   }
 
   p { margin-bottom: 1em; }
+
+  h1 {
+    font-size: 1.5em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
 }
