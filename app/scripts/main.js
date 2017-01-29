@@ -20,7 +20,12 @@ video.addEventListener('canplay', function() {
     let percent_scrolled = window.scrollY / scrollable_height;
     let percent_video_duration = video_duration * percent_scrolled;
     video.currentTime = percent_video_duration;
-    video.play();
+
+    if (percent_scrolled < .9) {
+      video.play();
+    } else {
+      video.pause();
+    }
   });
 });
 
