@@ -23,17 +23,13 @@ let play_or_pause_video = _.debounce(function(percent_scrolled, video) {
 
 video.addEventListener('canplay', function() {
   let scrollable_height = document_height - window_height;
-  let scroll_event_count = 0;
 
   window.addEventListener('scroll', function() {
-    scroll_event_count = scroll_event_count + 1;
+    let percent_scrolled = window.scrollY / scrollable_height;
+    let percent_video_duration = video_duration * percent_scrolled;
+    video.currentTime = percent_video_duration;
 
-    if (!!(scroll_event_count % 2)) {
-      let percent_scrolled = window.scrollY / scrollable_height;
-      let percent_video_duration = video_duration * percent_scrolled;
-      video.currentTime = percent_video_duration;
-      play_or_pause_video(percent_scrolled, video);
-    }
+    play_or_pause_video(percent_scrolled, video);
   });
 });
 
