@@ -15,10 +15,8 @@ video.addEventListener('loadeddata', function() {
 
 let play_or_pause_video = _.debounce(function(percent_scrolled, video) {
   if (percent_scrolled < .9) {
-    console.log('play');
     video.play();
   } else {
-    console.log('pause');
     video.pause();
   }
 }, 100);
@@ -34,9 +32,6 @@ video.addEventListener('canplay', function() {
       let percent_scrolled = window.scrollY / scrollable_height;
       let percent_video_duration = video_duration * percent_scrolled;
       video.currentTime = percent_video_duration;
-
-      console.log('scroll');
-
       play_or_pause_video(percent_scrolled, video);
     }
   });
