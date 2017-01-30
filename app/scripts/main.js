@@ -1,48 +1,49 @@
-let video, video_duration, document_height, window_height;
+var youtube_player, scrollable_height, video_duration;
 
-let get_browser_dimensions = function() {
-  document_height = $(document).height();
-  window_height = window.innerHeight;
-}();
-
-let get_video_element = function() {
-  video = $('.video .video-element')[0];
-}();
-
-video.addEventListener('loadeddata', function() {
-  video_duration = video.duration;
-});
-
-let play_or_pause_video = _.debounce(function(percent_scrolled, video) {
-  if (percent_scrolled < .9) {
-    video.play();
-  } else {
-    video.pause();
-  }
-}, 100);
-
-video.addEventListener('canplay', function() {
-  let scrollable_height = document_height - window_height;
-
+let scroll_seek = (youtube_player) => {
   window.addEventListener('scroll', function() {
-    let percent_scrolled = window.scrollY / scrollable_height;
-    let percent_video_duration = video_duration * percent_scrolled;
-    video.currentTime = percent_video_duration;
+    var percent_scrolled = window.scrollY / scrollable_height;
 
-    play_or_pause_video(percent_scrolled, video);
+    var seek_in_seconds = video_duration * percent_scrolled;
+
+    youtube_player.seekTo(seek_in_seconds, true);
   });
-});
-
-let activate_reading_mode = function() {
-  $('body').addClass('reading').removeClass('watching');
 };
 
-let deactivate_reading_mode = function() {
-  $('body').addClass('watching').removeClass('reading');
+window.onYouTubeIframeAPIReady = () => {
+  youtube_player = new YT.Player('youtube_player', {
+    events: {
+      'onReady': on_ready,
+      'onStateChange': on_state_change
+    }
+  });
+}
+
+let on_ready = () => {
+  video_duration = youtube_player.getDuration();
+
+  let get_browser_dimensions = function() {
+    let document_height = $(document).height();
+    let viewport_height = window.innerHeight;
+    scrollable_height = document_height - viewport_height;
+  }();
+
+  scroll_seek(youtube_player);
+}
+
+let on_state_change = (state) => {
+  if (state.data === -1) {
+    $('.video-cover').removeClass('video-cover--black');
+  }
+}
+
+let activate_video_focus_mode = () => {
+  $('body').addClass('video_in_focus');
 };
 
-$('.article').on('mouseover', activate_reading_mode);
-$('.article').on('mouseout', deactivate_reading_mode);
+let deactivate_video_focus_mode = () => {
+  $('body').removeClass('video_in_focus article_in_focus');
+}
 
-$('body').on('touchstart', activate_reading_mode);
-$('body').on('touchend', deactivate_reading_mode);
+$('body').on('touchstart', activate_video_focus_mode);
+$('body').on('touchend', deactivate_video_focus_mode);
