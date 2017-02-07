@@ -1,49 +1,29 @@
-var youtube_player, scrollable_height, video_duration;
+let iframe = document.querySelector('iframe');
+let player = new Vimeo.Player(iframe);
+let video_duration = null;
 
-let scroll_seek = (youtube_player) => {
-  window.addEventListener('scroll', function() {
-    var percent_scrolled = window.scrollY / scrollable_height;
+let clip_number = (n) => {
+  return Math.min(Math.max(n, .01), .99);
+}
 
-    var seek_in_seconds = video_duration * percent_scrolled;
+let seek_player = () => {
+  let container_height = 1856;
+  let element_scroll_distance = window.scrollY;
+  let percent_scrolled =
+    clip_number(element_scroll_distance / container_height);
+  let seek_time = video_duration * percent_scrolled;
 
-    youtube_player.seekTo(seek_in_seconds, true);
+  console.log(`player.setCurrentTime(${seek_time})`);
+
+  player.setCurrentTime(seek_time).then(function(seconds) {
+    console.log('setCurrentTime() success');
+    player.pause();
+  }).catch(function(error) {
+    console.log(`error: ${error}`);
   });
-};
-
-window.onYouTubeIframeAPIReady = () => {
-  youtube_player = new YT.Player('youtube_player', {
-    events: {
-      'onReady': on_ready,
-      'onStateChange': on_state_change
-    }
-  });
 }
 
-let on_ready = () => {
-  video_duration = youtube_player.getDuration();
-
-  let get_browser_dimensions = function() {
-    let document_height = $(document).height();
-    let viewport_height = window.innerHeight;
-    scrollable_height = document_height - viewport_height;
-  }();
-
-  scroll_seek(youtube_player);
-}
-
-let on_state_change = (state) => {
-  if (state.data === -1) {
-    $('.video-cover').removeClass('video-cover--black');
-  }
-}
-
-let activate_video_focus_mode = () => {
-  $('body').addClass('video_in_focus');
-};
-
-let deactivate_video_focus_mode = () => {
-  $('body').removeClass('video_in_focus article_in_focus');
-}
-
-$('body').on('touchstart', activate_video_focus_mode);
-$('body').on('touchend', deactivate_video_focus_mode);
+player.getDuration().then(function(duration) {
+  video_duration = duration;
+  window.addEventListener('scroll', seek_player);
+});
