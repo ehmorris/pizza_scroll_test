@@ -7,16 +7,7 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <div class="video">
-      <div class="video-cover video-cover--black"></div>
-      <iframe
-        class="video-element"
-        id="youtube_player"
-        src="https://www.youtube.com/embed/rZojgVucBTA?enablejsapi=1&rel=0&showinfo=0&loop=1&controls=0&modestbranding=1"
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-    </div>
+    <div class="title" id="test">VIDEO 1</div>
 
     <div class="article">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at nisi sed nunc maximus blandit. Fusce quis dictum nibh. Vestibulum tempus, nunc at imperdiet finibus, justo nisl commodo orci, vitae sagittis enim lacus ut eros. Sed porttitor sem eget lacus dapibus lobortis. Aliquam justo libero, efficitur non pellentesque blandit, ultricies ac lorem. Ut tincidunt scelerisque commodo. Nullam odio felis, pellentesque sed odio nec, finibus tincidunt mi.</p>
@@ -26,9 +17,26 @@
       <p>Curabitur non tristique sapien, quis pellentesque sapien. Aenean ligula massa, blandit a lobortis ut, vestibulum tristique erat. Donec vel faucibus tortor, nec volutpat diam. Aenean consequat leo nec tortor egestas, nec convallis tellus euismod. Duis dignissim neque in eros porttitor, at luctus dui fringilla. Nunc quis viverra dui, eu accumsan ipsum. Aenean vel lacus vulputate velit aliquam pharetra. Morbi ligula odio, pellentesque id ligula non, mattis convallis erat. Integer tortor lorem, auctor quis accumsan eu, mollis vitae massa.</p>
     </div>
 
+    <div class="title">VIDEO 2</div>
+
+    <div class="article">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at nisi sed nunc maximus blandit. Fusce quis dictum nibh. Vestibulum tempus, nunc at imperdiet finibus, justo nisl commodo orci, vitae sagittis enim lacus ut eros. Sed porttitor sem eget lacus dapibus lobortis. Aliquam justo libero, efficitur non pellentesque blandit, ultricies ac lorem. Ut tincidunt scelerisque commodo. Nullam odio felis, pellentesque sed odio nec, finibus tincidunt mi.</p>
+      <p>Pellentesque sagittis turpis erat. Nunc ut ante a quam dictum pretium. Nunc fermentum, elit vel egestas accumsan, orci dui egestas ipsum, sed condimentum tellus leo in magna. Curabitur nulla orci, scelerisque sed tellus facilisis, interdum bibendum urna. Vivamus posuere mollis libero, in pulvinar neque tempus euismod. In dui enim, finibus non lobortis nec, ornare eget turpis. Phasellus gravida, neque eu suscipit auctor, felis nisl posuere orci, nec mattis neque diam eu velit. Suspendisse porttitor augue a magna laoreet ornare.</p>
+      <p>Phasellus sit amet massa eu tellus gravida vestibulum. Nam fermentum nunc nec sodales mattis. Vestibulum sed tristique ex. Duis sodales neque at purus hendrerit, quis luctus mi ornare. Proin nec magna consectetur, posuere nisi ac, euismod justo. Quisque sit amet nibh hendrerit, pulvinar enim ut, efficitur neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque ornare aliquet dui facilisis commodo. Aenean sed quam ornare, accumsan lacus eu, pharetra leo. Aenean tempor enim purus, eu pulvinar arcu imperdiet at. Pellentesque quam erat, varius vel consequat eget, blandit non tortor.</p>
+      <p>Curabitur non tristique sapien, quis pellentesque sapien. Aenean ligula massa, blandit a lobortis ut, vestibulum tristique erat. Donec vel faucibus tortor, nec volutpat diam. Aenean consequat leo nec tortor egestas, nec convallis tellus euismod. Duis dignissim neque in eros porttitor, at luctus dui fringilla. Nunc quis viverra dui, eu accumsan ipsum. Aenean vel lacus vulputate velit aliquam pharetra. Morbi ligula odio, pellentesque id ligula non, mattis convallis erat. Integer tortor lorem, auctor quis accumsan eu, mollis vitae massa.</p>
+    </div>
+
+    <div class="title">|||||</div>
+
+    <div class="video">
+      <div class="video-cover"></div>
+      <div class="video-element" id="video_element"></div>
+    </div>
+
     <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="/bower_components/underscore/underscore.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/waypoints/lib/noframework.waypoints.js"></script>
+    <script src="/bower_components/waypoints/lib/shortcuts/inview.js"></script>
     <script src="scripts/main.js"></script>
   </body>
 </html>
