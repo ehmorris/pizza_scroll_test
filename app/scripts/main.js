@@ -8,29 +8,103 @@ const player_settings = {
   autoplay: 0,
 };
 
-let video_list = [
-  {
-    id: 'rZojgVucBTA',
-    duration: 108,
-    $container: null,
-    container_height: null,
-    container_top_offset: null
-  },
-  {
-    id: 'YFO1Wrkk6Bs',
-    duration: 1663,
-    $container: null,
-    container_height: null,
-    container_top_offset: null
-  },
-  {
-    id: 'zg9FIwCmx5w',
-    duration: 143,
-    $container: null,
-    container_height: null,
-    container_top_offset: null
-  }
-];
+var video_list = [{
+  id: '4btICcOUkw0',
+  duration: 40,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'Vo18tkgMtrs',
+  duration: 32,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'bonGYH8iepg',
+  duration: 22,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'vjV1Vmex6nA',
+  duration: 26,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'bA3NFrggbw8',
+  duration: 35,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'DSOssUb6l7w',
+  duration: 39,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: '3udj8MTuIyE',
+  duration: 37,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'liUr3HBo_Eo',
+  duration: 27,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'zg9FIwCmx5w',
+  duration: 143,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'PnGnjF0Klh4',
+  duration: 58,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'VjOm9sYyEFE',
+  duration: 62,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'MVdr3h73baU',
+  duration: 103,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: '8CakQFGBGg8',
+  duration: 78,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'VgeiwGB6Q4g',
+  duration: 116,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'rZojgVucBTA',
+  duration: 108,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}, {
+  id: 'YFO1Wrkk6Bs',
+  duration: 1663,
+  $container: null,
+  container_height: null,
+  container_top_offset: null
+}];
 
 let player = null;
 let player_is_initialized, player_being_initialized = false;
