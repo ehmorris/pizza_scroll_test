@@ -174,7 +174,7 @@ let unhide_video = () => {
 }
 
 let activate_article_video = ($article) => {
-  let article_index = $('.article').index($article);
+  let article_index = $('.famer').index($article);
   video = video_list[article_index];
 
   console.log(`activate article ${article_index}, video ${video.id}`);
@@ -206,7 +206,7 @@ let activate_article_video = ($article) => {
 }
 
 window.onYouTubeIframeAPIReady = () => {
-  $('.article').each(function() {
+  $('.famer').each(function() {
     let $article = $(this);
 
     new Waypoint.Inview({
