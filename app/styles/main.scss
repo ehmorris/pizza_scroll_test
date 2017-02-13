@@ -32,6 +32,10 @@ body {
   z-index: -1;
 }
 
+.video--hide {
+  transform: translateX(-100%);
+}
+
 .video-cover {
   border-style: solid;
   border-color: #000;

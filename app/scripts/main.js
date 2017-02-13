@@ -50,11 +50,14 @@ let deactivate_focus_mode = () => {
   $('body').removeClass('video_in_focus');
 }
 
-let new_youtube_player = (element_id, video_id, callback) => {
+let new_youtube_player = (element_id, video_id, callback, on_state_change) => {
   return new YT.Player(element_id, {
     videoId: video_id,
     playerVars: player_settings,
-    events: { 'onReady': callback }
+    events: {
+      'onReady': callback,
+      'onStateChange': on_state_change
+    }
   });
 }
 
@@ -86,6 +89,16 @@ let seek_player = () => {
   scrolling_stopped = window.setTimeout(deactivate_focus_mode, 300);
 }
 
+let hide_video = () => {
+  $('.video').addClass('video--hide');
+}
+
+let unhide_video = () => {
+  window.setTimeout(() => {
+    $('.video').removeClass('video--hide');
+  });
+}
+
 let activate_article_video = ($article) => {
   let article_index = $('.article').index($article);
   video = video_list[article_index];
@@ -105,6 +118,11 @@ let activate_article_video = ($article) => {
       player_being_initialized = false;
       set_video_values();
       window.addEventListener('scroll', seek_player);
+    }, ({data: state}) => {
+      let ended = 0, unstarted = -1;
+
+      if (state === ended || state === unstarted) hide_video();
+      else unhide_video();
     });
   } else if (player_is_initialized && !player_being_initialized) {
     console.log(`player.loadVideoById(${video.id})`);
