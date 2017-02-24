@@ -156,6 +156,8 @@ let seek_player = () => {
   let percent_scrolled =
     clip_number(element_scroll_distance / video.container_height);
 
+  $('.debug_box').text(element_scroll_distance);
+
   player.seekTo(video.duration * percent_scrolled, true);
 
   activate_focus_mode();
@@ -212,6 +214,7 @@ window.onYouTubeIframeAPIReady = () => {
     new Waypoint.Inview({
       element: $(this)[0],
       enter: () => {
+        $('.debug_box').text('inview enter');
         activate_article_video($article);
       }
     });

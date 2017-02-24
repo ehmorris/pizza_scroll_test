@@ -1,5 +1,21 @@
+.debug_box {
+  border: 2px solid red;
+  color: #fff;
+  font-family: monospace;
+  font-size: 16px;
+  height: 16px;
+  left: 0;
+  line-height: 1;
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  width: 150px;
+}
+
 body {
   background: #000;
+  margin: 0;
+  padding: 0;
   text-rendering: optimizeLegibility;
 
   &.video_in_focus {
@@ -13,7 +29,7 @@ body {
   font-family: serif;
   font-size: 3vw;
   line-height: 1.4;
-  margin: 4em auto;
+  margin: 0 auto;
   transition: opacity 2s;
   width: 65vw;
 
@@ -45,10 +61,11 @@ body {
   font-size: 10vw;
   font-weight: bold;
   height: 100vh;
-  line-height: 1.1;
   justify-content: center;
-  width: 100%;
+  line-height: 1.1;
+  margin: 0;
   text-indent: -1em;
+  width: 100%;
 }
 
 .video {
