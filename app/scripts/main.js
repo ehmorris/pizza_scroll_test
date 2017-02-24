@@ -213,9 +213,15 @@ window.onYouTubeIframeAPIReady = () => {
 
     new Waypoint.Inview({
       element: $(this)[0],
-      enter: () => {
+      enter: (direction) => {
         $('.debug_box').text('inview enter');
-        activate_article_video($article);
+
+        if (direction === 'down') activate_article_video($article);
+      },
+      exit: (direction) => {
+        $('.debug_box').text('inview exit');
+
+        if (direction === 'up') activate_article_video($article);
       }
     });
   });
