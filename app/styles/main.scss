@@ -30,6 +30,7 @@ body {
   font-size: 3vw;
   line-height: 1.4;
   margin: 0 auto;
+  padding-bottom: 50vh;
   transition: opacity 2s;
   width: 65vw;
 
@@ -55,12 +56,12 @@ body {
 }
 
 .famer-name {
-  align-items: center;
+  align-items: flex-start;
   color: #fff;
   display: flex;
   font-size: 10vw;
   font-weight: bold;
-  height: 100vh;
+  height: 50vh;
   justify-content: center;
   line-height: 1.1;
   margin: 0;
